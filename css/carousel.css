@@ -43,7 +43,7 @@
 
 /* Estilo para el item activo (el del centro) */
 .carousel__item--active {
-    transform: scale(0.9); /* Tamaño completo */
+    transform: scale(0.8); /* Tamaño completo */
     opacity: 1; /* Totalmente visible */
 }
 
