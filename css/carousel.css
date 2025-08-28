@@ -36,14 +36,14 @@
     padding: 0 15px; /* Espacio entre imágenes */
     
     /* Estado por defecto (previsualización) */
-    transform: scale(0.8);
+    transform: scale(0.7);
     opacity: 0.6;
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 /* Estilo para el item activo (el del centro) */
 .carousel__item--active {
-    transform: scale(1); /* Tamaño completo */
+    transform: scale(0.9); /* Tamaño completo */
     opacity: 1; /* Totalmente visible */
 }
 
