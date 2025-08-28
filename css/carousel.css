@@ -1,0 +1,169 @@
+/* Estilos generales para la sección */
+.eventos {
+    background-color: #f4f4f9;
+    padding: 3rem 0; /* Ajustamos el padding */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Evita barras de scroll horizontales */
+}
+
+.section__title {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Contenedor principal del carrusel */
+.carousel {
+    position: relative;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 2rem 0;
+}
+
+/* Contenedor de las imágenes (clave para el centrado) */
+.carousel__container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los items */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* AQUI ESTA LA MAGIA DEL DISEÑO */
+.carousel__item {
+    /* Cada item ocupará un 30% del contenedor y no se encogerá */
+    flex: 0 0 30%; 
+    box-sizing: border-box;
+    padding: 0 15px; /* Espacio entre imágenes */
+    
+    /* Estado por defecto (previsualización) */
+    transform: scale(0.8);
+    opacity: 0.6;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Estilo para el item activo (el del centro) */
+.carousel__item--active {
+    transform: scale(1); /* Tamaño completo */
+    opacity: 1; /* Totalmente visible */
+}
+
+.carousel__item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+/* FIN DE LA MAGIA */
+
+/* Botones y puntos se mantienen similares */
+.carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carousel__button:hover {
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel__button--left {
+    left: 30px;
+}
+
+.carousel__button--right {
+    right: 30px;
+}
+
+/* =========================================== */
+/* === NUEVOS ESTILOS PARA LA BARRA DE PUNTOS === */
+/* =========================================== */
+
+/* La barra de fondo (el "track") */
+.carousel__dots {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Diseño de la barra */
+    width: 200px; /* Ancho de la barra de progreso */
+    height: 6px;  /* Grosor de la barra */
+    background-color: #ddd;
+    border-radius: 3px;
+    
+    /* Eliminamos flex para que no muestre los 52 puntos */
+    display: block; 
+}
+
+/* El indicador móvil (el "thumb") */
+.carousel__dots-thumb {
+    /* Lo posicionamos al inicio de la barra */
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    /* Diseño del indicador */
+    width: 50px; /* Ancho del indicador */
+    height: 100%; /* Ocupa todo el alto de la barra */
+    background-color: #333;
+    border-radius: 3px;
+    
+    /* Transición suave para el movimiento */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Ocultamos los puntos originales que genera el JS */
+.carousel__dot {
+    display: none;
+}
+
+/* =========================================== */
+/* === ESTILOS PARA DISPOSITIVOS MÓVILES === */
+/* =========================================== */
+
+/* Se aplicará a pantallas con un ancho máximo de 600px */
+@media (max-width: 600px) {
+
+    .section__title {
+        font-size: 2rem; /* Título un poco más pequeño */
+    }
+
+    /* Hacemos que cada imagen ocupe casi todo el ancho */
+    .carousel__item {
+        flex: 0 0 60%; /* Cada item ocupará el 90% del ancho */
+        padding: 0 5px; /* Reducimos el espaciado lateral */
+
+        /* Reseteamos el efecto de previsualización */
+        transform: scale(1); /* Todas las imágenes a tamaño completo */
+        opacity: 1; /* Todas totalmente visibles */
+    }
+
+    /* Acercamos los botones a los bordes */
+    .carousel__button--left {
+        left: 10px;
+    }
+
+    .carousel__button--right {
+        right: 10px;
+    }
+
+    .carousel__dots {
+        bottom: -5px; /* Acercamos un poco los puntos */
+    }
+}

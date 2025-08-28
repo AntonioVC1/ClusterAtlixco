@@ -1,0 +1,818 @@
+/* --- General Styles & Variables --- */
+:root {
+    --primary-color: #2F3C7E;
+    --secondary-color: #4A69BD;
+    --accent-color: #F8B400;
+    --background-color: #FFFFFF;
+    --light-gray-bg: #f8f9fa;
+    --text-color: #333;
+    --light-text-color: #fff;
+    --font-family-headings: 'Montserrat', sans-serif;
+    --font-family-body: 'Lato', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-body);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.7;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.eventos p {
+    text-align: center;
+    font-size: 0.9rem; /* Un poco más pequeño */
+    color: #666;      /* Un color gris para que no sea tan llamativo */
+    margin-top: 2rem; /* Espacio para separarlo del carrusel */
+  }
+  
+  /* Para darle un mejor estilo al enlace */
+  .eventos p a {
+      color: #007bff;
+      text-decoration: none;
+  }
+  
+  .eventos p a:hover {
+      text-decoration: underline;
+  }
+.section {
+    padding: 6rem 0;
+}
+
+.section__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+    font-family: var(--font-family-headings);
+}
+
+.section__subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: -2rem auto 3rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: var(--font-family-headings);
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #ffc107;
+    transform: translateY(-3px);
+}
+
+/* --- Header & Navigation --- */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Capa por defecto */
+    transition: z-index 0.4s;
+}
+/* Regla clave para elevar el header cuando el menú está abierto */
+.header.menu-open {
+    z-index: 1002;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.5rem;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.nav__logo-img {
+    height: 60px;
+    width: auto;
+}
+
+/* NUEVO: Estilos para el texto junto al logo */
+.nav__logo-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: var(--font-family-headings);
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+.nav__toggle {
+    display: none; /* Oculto en escritorio */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1003; /* El botón siempre debe estar encima de todo */
+}
+
+.nav__toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos por defecto para la sección home (aplican primero a móviles) */
+.home {
+    color: var(--light-text-color);
+    text-align: center;
+    min-height: 100vh; /* Altura normal para pantallas pequeñas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px; /* Asegura un padding básico en móviles */
+}
+
+/* Media Query para pantallas más grandes (ej. tabletas y escritorios) */
+@media (min-width: 768px) {
+    .home {
+        min-height: 130vh; /* Altura más grande para escritorios */
+    }
+
+    .home__title {
+        font-size: 3.5rem; /* Ajuste opcional para títulos en escritorio */
+    }
+
+    .home__subtitle {
+        font-size: 1.25rem; /* Ajuste opcional para subtítulos en escritorio */
+        max-width: 700px; /* Limita el ancho del subtítulo para mejor lectura */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Modifica esta regla existente */
+.home__bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    /* Añade esta línea para suavizar el movimiento del parallax */
+    transition: transform 0.2s ease-out; 
+}
+
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 37, 64, 0.6);
+    z-index: 2; /* Capa 2: Superposición oscura */
+}
+
+.home__container {
+    /* CORRECCIÓN: Asegura que el contenedor del texto esté encima de todo */
+    position: relative; 
+    z-index: 3; /* Capa 3: Contenido de texto */
+    max-width: 800px;
+}
+
+.home__title {
+    font-size: 2.8rem;
+    font-family: var(--font-family-headings);
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.home__subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: #f0f0f0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- PEGA ESTE NUEVO BLOQUE --- */
+
+/* --- About & Model Sections --- */
+.vocation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.vocation-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    overflow: hidden; /* Asegura que la imagen respete los bordes redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vocation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(47, 60, 126, 0.1);
+}
+
+.vocation-card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+}
+
+.vocation-card__content {
+    padding: 1.5rem;
+}
+
+.vocation-card__content h3 {
+    font-family: var(--font-family-headings);
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.vocation-card__content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- Estilos para la sección Ecosistema (sin cambios) --- */
+.ecosystem__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Estilos para la sección Ecosistema (sin cambios) --- */
+.ecosystem__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* ... (El resto de tus estilos para .ecosystem__card permanecen igual) ... */
+.ecosystem__card {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    border-top: 5px solid var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ecosystem__card:hover {
+    border-top-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(47, 60, 126, 0.1);
+}
+
+.ecosystem__card .role {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.ecosystem__card hr {
+    border: none;
+    height: 1px;
+    background-color: #eee;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Contact Section --- */
+.contact {
+    background-color: var(--light-gray-bg);
+}
+
+.contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact__left h3, .contact__right h3 {
+    font-family: var(--font-family-headings);
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact__form input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.contact__buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.button-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-family-headings);
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.button-icon:first-of-type {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+}
+
+.button-icon:first-of-type:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.button-icon.whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.button-icon.whatsapp:hover {
+    background-color: #1DA851;
+    transform: translateY(-2px);
+}
+
+.button-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contact__social-container {
+    margin-top: 3rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    display: inline-block;
+    color: #a0a0a0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.social-icon:hover {
+    transform: scale(1.15);
+}
+
+.social-icon.facebook:hover { color: #1877F2; }
+.social-icon.instagram:hover { color: #E4405F; }
+.social-icon.linkedin:hover { color: #0A66C2; }
+
+.contact__right p {
+    margin-bottom: 1.5rem;
+}
+
+.contact__map {
+    margin-top: 2rem;
+}
+
+.contact__map iframe {
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--primary-color);
+    color: #a9a9a9;
+    /* REDUCIMOS EL PADDING SUPERIOR */
+    padding-top: 4rem; 
+}
+
+.footer__grid {
+    /* FLEXBOX PARA MEJOR DISTRIBUCIÓN */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+    gap: 2rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #3b4b8c;
+}
+.footer__about {
+    /* Definimos un ancho base para la sección del logo */
+    flex: 1;
+    min-width: 280px; /* Ancho mínimo antes de que se reajuste */
+}
+
+.footer__about .footer__logo-img {
+    max-width: 120px;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+}
+
+.footer__about-content p {
+    margin-bottom: 1rem;
+    max-width: 350px;
+}
+
+
+.footer__social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer__social .social-icon {
+    color: #a9a9a9;
+    transition: color 0.3s ease;
+}
+
+.footer__social .social-icon:hover {
+    color: var(--light-text-color);
+}
+
+/* NUEVO CONTENEDOR PARA LOS ENLACES DE LA DERECHA */
+.footer__navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem; /* Espacio entre las columnas de enlaces */
+    justify-content: flex-end; /* Alinea todo a la derecha */
+}
+
+.footer__links h4 {
+    font-family: var(--font-family-headings);
+    color: var(--light-text-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.footer__links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer__links ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer__links a {
+    color: #a9a9a9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer__links a:hover {
+    color: var(--accent-color);
+}
+
+.footer__back-to-top {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 2rem; /* Espacio extra para el botón */
+}
+
+.back-to-top-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #a9a9a9;
+    border-radius: 5px;
+    color: #a9a9a9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.back-to-top-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    border-color: var(--secondary-color);
+}
+
+.footer__copyright {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* --- Footer Responsive --- */
+@media (max-width: 992px) {
+    .footer__grid {
+       flex-direction: column; /* Apila los elementos en tablets */
+       align-items: center;
+       text-align: center;
+    }
+    .footer__about .footer__logo-img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer__about-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .footer__social {
+        justify-content: center;
+    }
+    .footer__navigation {
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* OCULTAMOS EL MAPA DEL SITIO EN MÓVILES */
+    .footer__links--sitemap {
+        display: none;
+    }
+    
+    .footer__grid {
+        /* Mantenemos el apilado general, pero quitamos el centrado */
+        flex-direction: column;
+        align-items: stretch; /* Estira los items para ocupar el ancho */
+        text-align: left; /* Alineamos todo el texto a la izquierda por defecto */
+        padding-bottom: 1.5rem;
+    }
+    .footer__about {
+        /* Convertimos esta sección en un contenedor flex horizontal */
+        display: flex;
+        align-items: flex-start; /* Alinea el logo y el texto en la parte superior */
+        gap: 1.5rem; /* Espacio entre el logo y el texto */
+        margin-bottom: 2rem; /* Espacio antes de los enlaces de abajo */
+        font-size: 0.9rem;
+    }
+    .footer__about .footer__logo-img {
+        /* Hacemos el logo un poco más pequeño y evitamos que se encoja */
+        max-width: 100px;
+        flex-shrink: 0;
+    }
+    .footer__about-content p {
+        margin-bottom: 1rem;
+    }
+    .footer__social {
+        /* Alineamos los iconos a la izquierda debajo del texto */
+        justify-content: flex-start;
+    }
+
+    .footer__navigation {
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    flex-direction: row; /* Pone los elementos en una fila horizontal */
+    justify-content: space-between; /* Alinea los grupos a los extremos */
+    align-items: flex-start;
+    margin-top: 0;
+    }
+
+     .footer__back-to-top {
+        margin-left: 0; /* Quitamos el margen en móvil */
+    }
+    .footer__copyright {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.7rem;
+}
+}
+
+/* --- Ajustes para Móviles Pequeños --- */
+@media (max-width: 480px) {
+    .footer__navigation {
+        /* Centramos verticalmente los elementos para que se vean mejor */
+        align-items: center;
+    }
+
+    .footer__links a {
+        /* Reducimos un poco el texto de los enlaces */
+        font-size: 0.9rem;
+    }
+
+    .back-to-top-button .button-text {
+        /* Ocultamos el texto del botón */
+        display: none; 
+    }
+
+    .back-to-top-button {
+        /* Hacemos el botón más pequeño y cuadrado */
+        padding: 0.65rem;
+    }
+}
+
+/* NUEVO: Clases para la animación de scroll */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos para el Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Capa intermedia: oscurece el fondo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section__title {
+        font-size: 2.2rem;
+    }
+
+    .home__title {
+        font-size: 2.2rem;
+    }
+
+    /* Oculta el texto del logo en pantallas pequeñas */
+    .nav__logo-text {
+        display: none;
+    }
+    /* Ocultamos la lista de navegación de escritorio */
+    .nav .nav__list {
+        display: none;
+    }
+
+    .nav__toggle {
+        display: flex;
+    }
+
+    /* Dentro de @media (max-width: 768px) */
+
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -80%;
+        width: 70%;
+        height: 100%;
+        background-color: #ffffff; /* Fondo blanco sólido */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.4s ease-in-out;
+        padding-top: 6rem;
+        z-index: 1002; 
+    }
+
+    .nav__menu.active {
+        right: 0;
+    }
+    .nav__menu .nav__list {
+        display: flex; /* Hacemos visible la lista dentro del menú móvil */
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 2.5rem;
+    }
+    .nav__menu .nav__link {
+        font-size: 1.3rem;
+    }
+}
+/* --- Estilos para la Galería Masonry --- */
+.masonry-gallery {
+    column-count: 3;
+    column-gap: 1.5rem;
+}
+
+/* NUEVO: Estilo para el contenedor de cada item (la tarjeta completa) */
+.masonry-item {
+    display: inline-block; /* Necesario para que column-count funcione bien */
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que todo respete los bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #fff; /* Fondo para la caption */
+}
+
+/* Ajustamos el estilo de la imagen dentro de la tarjeta */
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+/* NUEVO: Estilo para el título/caption */
+.masonry-item figcaption {
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* --- Hacemos la galería responsive --- */
+@media (max-width: 992px) {
+    .masonry-gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .masonry-gallery {
+        column-count: 2; /* Mantenemos 2 columnas como pediste */
+    }
+}
+/* NUEVO: Estilo para el título/caption */
+.masonry-item figcaption {
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: left;
+    background-color: #f8f8f8; /* Un fondo ligeramente gris para que se distinga */
+    border-bottom: 1px solid #eee; /* Una línea sutil para separarlo de la imagen */
+}
