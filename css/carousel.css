@@ -44,8 +44,8 @@
 
 /* Estilo para el item activo (el del centro) */
 .carousel__item--active {
-    transform: scale(0.9); /* Tamaño completo */
-    opacity: 1; /* Totalmente visible */
+    transform: scale(0.8); /* Tamaño completo */
+    opacity: 0.9; /* Totalmente visible */
 }
 
 .carousel__item img {
