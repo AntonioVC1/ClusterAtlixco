@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Correo de destino
         const recipientEmail = 'contacto@clustervalledeatlixco.mx';
         // Asunto del correo
-        const subject = 'Mensaje de Contacto desde la Web';
+        const subject = 'Mensaje de Contacto desde clustervalledeatlixco.mx';
         // Cuerpo del correo con los datos del formulario
         const body = `Hola, mi nombre es ${name}.\n\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nEscribo para...`;
 
