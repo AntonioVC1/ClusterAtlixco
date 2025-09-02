@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = document.getElementById('phone').value;
 
         // Verificamos si los campos requeridos están llenos
-        if (!name || !email || !phone || !message) {
+        if (!name || !email || !phone) {
             alert('Por favor, completa todos los campos antes de enviar por WhatsApp.');
             return; // Detenemos la ejecución si falta algún campo
         }
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetPhone = '5212227091191'; // Asegúrate de que este es el número correcto
 
         // Creamos el mensaje para WhatsApp
-        const whatsappMessage = `Hola, mi nombre es ${name}.\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nEscribo para..`;
+        const whatsappMessage = `Hola, mi nombre es ${name}.\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nMensaje:\n${message}`;
 
         // Creamos el enlace de WhatsApp completo
         const whatsappLink = `https://wa.me/${targetPhone}?text=${encodeURIComponent(whatsappMessage)}`;
