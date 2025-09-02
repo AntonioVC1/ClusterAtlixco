@@ -71,15 +71,17 @@
                 <div class="contact__grid">
                     <div class="contact__left">
                         <h3>Envíanos un Mensaje</h3>
-                        <form class="contact__form">
-                            <input type="text" name="name" placeholder="Tu Nombre Completo" required>
-                            <input type="email" name="email" placeholder="Correo Electrónico" required>
-                            <input type="tel" name="phone" placeholder="Número de Teléfono" required>
+                        <form class="contact__form" id="contactForm">
+                            <input type="text" id="name" name="name" placeholder="Tu Nombre Completo" required>
+                            <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                            <input type="tel" id="phone" name="phone" placeholder="Número de Teléfono" required>
+
                             <div class="contact__buttons">
                                 <button type="submit" class="button-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                     Enviar por Correo
                                 </button>
+                                
                                 <a href="https://wa.me/5212441234567" target="_blank" class="button-icon whatsapp">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.803 6.287l-1.229 4.484 4.542-1.229z"/></svg>
                                     Enviar por WhatsApp
@@ -174,5 +176,6 @@
 
     <script src="js/scripts.js"></script>
     <script src="js/carousel.js"></script>
+    <script src="js/formulario.js"></script>
 </body>
 </html>
