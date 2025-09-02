@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const recipientEmail = 'contacto@clustervalledeatlixco.mx';
         const subject = 'Mensaje de Contacto desde clustervalledeatlixco.mx';
-        const body = `Hola, mi nombre es ${name}.\n\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nEscribo para..`;
+        const body = `Hola, mi nombre es ${name}.\n\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nEscribo para...`;
 
         const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoLink;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetPhone = '5212227091191'; // Asegúrate de que este es el número correcto
 
         // Creamos el mensaje para WhatsApp
-        const whatsappMessage = `Hola, mi nombre es ${name}.\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nMensaje:\n${message}`;
+        const whatsappMessage = `Hola, mi nombre es ${name}.\nMi correo es: ${email}\nMi teléfono es: ${phone}\n\nEscribo para..`;
 
         // Creamos el enlace de WhatsApp completo
         const whatsappLink = `https://wa.me/${targetPhone}?text=${encodeURIComponent(whatsappMessage)}`;
